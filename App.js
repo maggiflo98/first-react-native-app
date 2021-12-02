@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
-import { StyleSheet, Text, View ,Button} from 'react-native';
+import { StyleSheet, Text, View ,Button,TextInput} from 'react-native';
 
 export default function App() {
   const [user,setUser]=useState('Alan')
@@ -12,6 +12,14 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.mytext}>{user} is eating {fruit.name}which cost KSH{fruit.price}</Text>
+      <TextInput style={styles.textinput}placeholder="Enter the username"
+      onChange={e=>setUser(e.target.value)}/>
+        <TextInput style={styles.textinput}placeholder="Enter the fruit"
+        multiline
+      onChange={e=>setFruit({...fruit,name:e.target.value})}/>
+      <TextInput style={styles.textinput}placeholder="Enter the fruit"
+        keyboardType="numeric"
+      onChange={e=>setFruit({...fruit,price:e.target.value})}/>
       <View  style={styles.buttonstyle}>
         <Button title="Change"
           onPress={pressHandler}
@@ -34,5 +42,12 @@ const styles = StyleSheet.create({
   mytext:{
     fontSize:20,
    
+  },
+  textinput:{
+    borderWidth:1,
+    margin:10,
+    height:50,
+    width:300,
+
   }
 });
