@@ -66,7 +66,16 @@ export default function App() {
  
   return (
     <View style={styles.container}>
-    {
+      <FlatList
+      numColumns={3}
+      keyExtractor={(item)=>item.id.toString()}
+      data={todos}
+      renderItem={({item})=>(
+        <Text style={styles.todo}>{item.title}</Text>
+      )
+      }
+      />
+    {/* {
       todos.map(todo=>
          ( <View  key ={todo.id} style={styles.todo}>
             <Text>{todo.title}</Text>
@@ -75,7 +84,7 @@ export default function App() {
           
         
       ))
-    }
+    } */}
         
     
      
@@ -94,11 +103,11 @@ const styles = StyleSheet.create({
   
    
   todo: {
-    margin: 30,
+    margin: 10,
     backgroundColor: 'deeppink',
     color: 'white',
-    fontSize: 30,
-    padding: 30
+    fontSize: 10,
+    padding: 10
   }
 
 
